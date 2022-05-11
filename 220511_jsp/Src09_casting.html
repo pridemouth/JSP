@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>형변환 & null</title>
+		<script>
+		
+			
+			let num = 11;
+			console.log(typeof(num));
+			console.log(25 + num);
+			
+			//	String() : other-type -> string type
+			let data = String(num);
+			console.log(data + ' : ' + typeof(data));
+			
+			//	Number() : other-type -> number type
+			let test = Number(data);
+			console.log(test + ' : ' + typeof(test));
+		
+			let pt = null;
+			console.log(`type of null : ${typeof(null)}`);
+			//	null의 타입은 null, 값도 null임.
+			//	object type으로 출력되나, null type으로 간주해야 함.
+			//	더보기 : https://curryyou.tistory.com/183
+			
+			let zero = Number(null);
+			let zero1 = parseInt(null);
+			console.log(`Number(null) : ${zero} / parseInt(null) : ${zero1}`);
+		
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
