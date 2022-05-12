@@ -13,6 +13,6 @@
 	반복문
 		for
 		
-	DOM (Document Object Model)
-		Body 최후미의 Script에서 Body 내의 태그들을 객체처럼 뽑아 쓸 수 있음.
+DOM (Document Object Model)
+	Body 최후미의 Script에서 Body 내의 태그들을 객체처럼 뽑아 쓸 수 있음.
 	
