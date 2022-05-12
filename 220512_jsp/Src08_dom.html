@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM (Document Object Model)</title>
+	</head>
+	<body>
+	
+		<div id="divid" style="color: red;">내용</div>
+		
+		<input id="inputid" name="inputname" type="text" value="기본값">
+	
+		<p id="pid">이것은 첫 번째 p 태그이며 id는 pid입니다.</p>
+		<p class="pclass">이것은 두 번째 p 태그이며 class는 pclass입니다.</p>
+	
+		<!--
+			각 tag(object)와의 상호작용을 하기 위해서
+			script를 body의 최후미에 사용.
+			<head> 실행 시점이 <body>보다 빠르기 때문.
+		-->
+		<script>
+		
+			//	document 는, 선언부(!DOCTYPE ~), html부를 전부 포함하는 이 문서(객체) 그 자체임.
+			let obj = document.getElementById("divid");
+			console.log(obj);
+			
+			obj.style.color = "blue";	//	태그의 속성값을 변경시킬 수 있음.
+			console.log(obj.id);
+			console.log(obj.style);
+			console.log(obj.innerHTML);	//	더블태그의 '내용'에는 .innerHTML로 접근 가능.
+			
+			let obj2 = document.getElementById("inputid");
+			console.log(obj2);
+			console.log(obj2.id);
+			console.log(obj2.value);
+		
+			//	기본 작동 방식
+			//	java에서 String으로 html 코드를 만들어서 쏘면
+			//	브라우저에서 그걸 받아갖고 알아서 그려 줌.
+		
+		</script>
+	</body>
+</html>

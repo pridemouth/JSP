@@ -1,0 +1,30 @@
+<!DOCTYPE html>	
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>삼항 연산자, null 병합 연산자</title>
+		<script>
+		
+			let a = 5;
+			let b = 3;
+			(a>b)?console.log(a):console.log(b);
+			
+			
+			//	
+			let c = null;
+			let d = 1;
+			let res = c ?? d;
+				//	if(typeof(c) == undefined || typeof(c) == null) { res = c; }
+				//	else { res = d; }
+				
+				//	(a != null && a != undefined)? res = c : res = d;
+			console.log(res);
+			
+			let val = 1234;
+			res = val ?? "nothing";
+			console.log(res);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

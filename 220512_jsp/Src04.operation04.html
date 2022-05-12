@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>논리 연산자</title>
+		<script>
+			//	html에서, 각각의 tag는 객체다?
+			
+			//	NOT
+			let a = !(3 > 5);
+			console.log(`NOT : ${a}`);
+			
+			//	AND
+			let b = (3 > 5) && (5 > 3);
+			console.log(`AND : ${b}`);
+			
+			//	OR
+			let c = (3 > 5) || (5 > 3);
+			console.log(`OR : ${c}`);
+			
+			let result = (3 < 5) || (4 < 5) || alert("aaa");
+			//	OR 연산자의 중첩에서,
+			//	앞에 위치한 수식이 true이면 뒤의 수식을 생략해버림.
+			//	따라서 alert()이 씹혀버림.
+			//	alert()을 맨 앞으로 당기면 실행되긴 함.
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

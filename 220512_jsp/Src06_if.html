@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>조건문</title>
+		<script>
+		
+			if(true)
+			{
+				//	alert('참인 경우 동작.');
+			}
+			
+			let num = 3;
+			if(num < 5 && num > 1)
+			{
+				//	alert('조건문이 참일 경우 동작1');
+			}
+			else
+			{
+				//	alert('조건문이 참일 경우 동작2');
+			}
+			
+			let score = 75;
+			if(score > 90)
+			{
+				//	alert(`A grade`);
+			}
+			else if(score > 60)
+			{
+				//	alert(`B grade`);
+			}
+			else
+			{
+				//	alert(`F grade`);
+			}
+			
+			//	console.log(Boolean()) 에 넣어보면
+			//	이 변수가 true로 처리될지, false로 처리될지 알 수 있다.
+			//	자주 쓰게 될 듯.
+			//	false
+			console.log(Boolean(``));
+			console.log(Boolean());
+			console.log(Boolean(0));
+			console.log(Boolean(null));
+			console.log(Boolean(undefined));
+			
+			//	true
+			console.log(Boolean(` `));
+			console.log(Boolean(`\n`));
+			console.log(Boolean(-1));
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
