@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM - 요소 확인하기</title>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="top">
+				<h1>1st h1</h1>
+				<h1>2nd h1</h1>
+				<h1>3rd h1</h1>
+				<p class="last">top.p</p>
+			</div>
+			<div id="center">
+				<ul>
+					가가
+					<li>1st li</li>
+					나나
+					<li>2nd li</li>
+					다다
+					<li>3rd li</li>
+				</ul>
+			</div>
+			<div id="bottom">
+				<h1>4th h1</h1>
+				<h1>5th h1</h1>
+				<h1>6th h1</h1>
+				<p class="last">bottom.p</p>
+			</div>
+		</div>
+		<script>
+			//	DOM은 HTML, XML 등, HTML과 연결된 데이터를 다룰 수 있음.
+			//	Element : HTML-tag, Excel-cell, etc.
+			//	각각의 Element는 HTML 트리 구조 속에서 Node로 간주될 수도 있음.
+			
+			//	XML은 HTML의 원시 버전이라고 생각하면 됨.
+			//	표준화 된 HTML보다 자유롭게 태그 지정을 할 수 있음.
+			
+			console.log('#1 ===========================');
+			
+			let d = document;
+			console.log(d);
+			
+			//	id는 단 하나 존재하므로 get "Element"
+			let t = document.getElementById('top');
+			console.log(t);
+			
+			//	class나 tagName은 여럿 존재할 수 있으므로 get "Elements"
+			//	배열을 반환함.
+			let t_h1 = t.getElementsByTagName('h1');
+			console.log(t_h1);
+			
+			//	배열 사용
+			for(let i=0; i<t_h1.length; i++)
+			{
+				console.log(t_h1[i].innerHTML);
+			}
+			
+			let d_h1 = d.getElementsByTagName('h1');
+			console.log(d_h1);
+			
+			let b = document.getElementById('bottom');
+			console.log(b);
+			
+			console.log('#2 ===========================');
+			
+			console.log(b.nodeType);	// 노드 타입을 확인. 숫자로 반환함.
+			console.log(b.nodeName);	// 노드 이름을 확인.
+			console.log(b.nodeValue);	// 노드값을 확인.
+			console.log(t_h1[0].firstChild.nodeValue);	//	텍스트 노드의 텍스트값 확인
+			console.log(t_h1[0].firstChild.nodeName);	//	#text
+			
+			console.log('#3 ===========================');
+			
+			//	ul li 태그는 실무에서 메뉴 작성에 쓰임.
+			//	c_ul에서 가가, 나나, 다다 역시 각각의 li와 함께 하나의 child로 취급됨.
+			let c_ul = document.getElementsByTagName('ul')[0];
+			console.log(c_ul);
+			
+			let c_ul_li = c_ul.getElementsByTagName('li');
+			for(let i=0; i<c_ul_li.length; i++)
+			{
+				console.log(c_ul_li[i].innerHTML + ' // ' + c_ul_li[i].firstChild.nodeValue + ' // ' + c_ul_li[i].nodeValue);
+			}
+			
+			console.log('#4 ===========================');
+			let p = document.getElementsByClassName('last');
+			console.log(p);
+			
+			p = t.getElementsByClassName('last');
+			console.log(p);
+			
+			//	노드 타입
+			//	01 Node.ELEMENT_NODE		: Tag, Element *
+			//	02 Node.ATTRIBUTE_NODE		: Attribute(id, class, type, value, etc.) *
+			//	03 Node.TEXT_NODE			: 문자열 데이터를 저장하기 위한 노드(=innerHTML) *
+			//	04 Node.CDATA_SECTION_NODE : Character Data(미리 지정된 문자 - 명령어, 약속어?를 표기)
+			//	05 EntityReference			: 
+			//	06 Entity					: 
+			//	07 Node.PROCESSING_INSTRUCTION_NODE : XML 구조 정의 데이터
+			//	08 Node.COMMENT_NODE		: <!-- --> *
+			//	09 Node.DOCUMENT_NODE		: 최상위 Document *
+			//	10 Node.DOCUMENT_TYPE_NODE	: <!DOCTYPE> *
+			//	11 Node.DOCUMENT_FRAGMENT_NODE	: 문서 파편 노드
+			//									(Class 비슷한 기능을 수행?
+			//									기본적으로 Document 상의 어떤 노드와도 연결되지 않음) *
+			
+		</script>
+	</body>
+</html>
