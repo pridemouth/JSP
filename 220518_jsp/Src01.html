@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document Object Model 13</title>
+		<style>
+			p {
+				background-color: green;
+				color: white;
+			}
+			div {
+				border: 1px solid black;
+				padding: 10px;
+			}
+		</style>
+		<!--
+			script 태그를 이 위치에서 사용할 수 있지만,
+			아직 안 배웠으므로 body 태그 하단에 작성함.
+		-->
+	</head>
+	<body>
+		<div id="wrap">
+			<!-- before begin -->
+			<p>
+				<!-- after begin -->
+				기준점
+				<!-- before end -->
+			</p>
+			<!-- after end -->
+		</div>
+		<script>
+			let colorText = '<b style="color: red;">위치 확인</b>';
+			let p = document.getElementsByTagName("p")[0];
+			console.log(p);
+			console.log(colorText);
+			
+			//	insertAdjacentHTML(position, text);
+			//	어떤 개체를 기준으로 데이터를 입력
+			//	평소에 쓸 일이 자주 있지는 않으나,
+			//	남이 만들어 놓은 마크업을 빠른 시간 안에 수정해야 할 때
+			//	알아두면 유용하게 써먹을 수 있음.
+			p.insertAdjacentHTML("beforebegin", colorText);
+			p.insertAdjacentHTML("afterbegin", colorText);
+			p.insertAdjacentHTML("beforeend", colorText);
+			p.insertAdjacentHTML("afterend", colorText);
+			
+			//	createElement(tag-name);
+			//	노드(객체)를 생성 (fragment node)
+			let ce = document.createElement("div");
+			ce.innerHTML = "<p>만들어진 요소</p>";
+			console.log(ce);
+			
+			//	appendChild(node-name);
+			//	노드를 부모 개체에 연결
+			document.getElementById("wrap").appendChild(ce);
+			
+			//	insertBefore(new-Element, origin-Element);
+			//	origin-Elemet 파라메터를 null로 넣을 경우, appendChild()와 같이 동작함.
+			//	Element는 "객체"이므로 하나의 부모노드에만 연결될 수 있음.
+			//	둘 이상의 부모노드에 연결하려 하면, 이전 연결이 끊어짐.
+			document.getElementById("wrap").insertBefore(ce, p);
+			document.getElementById("wrap").insertBefore(ce, null);
+			
+			//	setAttribute(attribute-name, value);
+			//	속성 노드의 값을 수정, 또는 생성
+			//	속성 노드는 DOM에서 자식 노드로 취급되지 않음.
+			let div = document.createElement("div");
+			div.setAttribute("id", "content");
+			div.innerHTML = "<p>만들어진 div.p</p>"
+			console.log(div);
+			//	div.innerText = "";
+			//	서식 없이, 생 텍스트를 입력
+			document.body.appendChild(div);
+			
+			//	createTextNode(text);
+			//	텍스트 노드를 생성
+			let text = document.createTextNode("#text");
+			div.appendChild(text);
+			
+			let h2 = document.createElement("h2");
+			h2.appendChild(text);
+			div.appendChild(h2);
+			
+			//	자식, 부모 노드 다루기
+			//	https://mingggu.tistory.com/28
+			
+			//	파편 노드에 종속 노드를 추가하면 어떻게 되나?
+			
+			//	p태그 안에 div 태그가 들어가나?
+		</script>
+	</body>
+</html>

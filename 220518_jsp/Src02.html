@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document Object Model 14</title>
+		<style>
+			table {
+				border: 1px solid black;
+			}
+			td {
+				border: 1px dotted red;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- NOTHING -->
+		<div id="wrap">
+			<table>
+				<tr>
+					<td>1, 1</td>
+					<td>1, 2</td>
+					<td>1, 3</td>
+					<td>1, 4</td>
+				</tr>
+				<tr>
+					<td>2, 1</td>
+					<td>2, 2</td>
+					<td>2, 3</td>
+					<td>2, 4</td>
+				</tr>
+				<tr>
+					<td>3, 1</td>
+					<td>3, 2</td>
+					<td>3, 3</td>
+					<td>3, 4</td>
+				</tr>
+			</table>
+		</div>
+		<script>
+		
+			//	Node Type
+			//	01. Element Node
+			//	02. Attribute Node
+			//	03. Text Node
+			//	08. Comment Node
+			//	09. Document Node
+			//	10. Document Type Node
+			//	11. Fragment Node
+			
+			console.log("document =====================================");
+			let doc = document;
+			console.log(doc.nodeType);		//	9 Document Node
+			console.log(doc.childNodes);	//	2 [<!DOCTYPE html>, html]
+			
+			console.log("doctype ======================================");
+			let doctype = doc.childNodes[0];
+			console.log(doctype.nodeType);	//	10 (Document Node)
+			console.log(doctype.childNodes);//	0
+			
+			console.log("body =========================================");
+			let docBody = doc.body;
+			console.log(docBody.nodeType);		//	1 Element Node
+			console.log(docBody.childNodes);	//	7 [text, comment, text, div#wrap, text, script, text]
+			
+			console.log("comment =======================================");
+			let comment = docBody.childNodes[1];
+			console.log(comment.nodeType);		//	8 Comment Node
+			console.log(comment.childNodes);	//	0
+			//	DOM 구조 사용 시, 
+			//	주석 역시 자식 노드로 취급되므로
+			//	html 내부 주석은 가급적 피할 것.
+			
+			console.log("script ========================================");
+			let docScript = docBody.childNodes[5];
+			console.log(docScript.nodeType);	//	1 Element Node
+			console.log(docScript.childNodes);	//	1 [text]
+			console.log(docScript.childNodes[0].nodeType);//	>> 3 Text Node
+		
+			console.log("div ===========================================");
+			let docDiv = docBody.childNodes[3];
+			console.log(docDiv.nodeType);	//	1 Element Node
+			console.log(docDiv.childNodes);	//	3 [text, table, text]
+			//	Attribute Node는 자식 노드로 취급되지 않음.
+			
+			console.log("div.attr ======================================");
+			let divAttr = docDiv.attributes[0];
+			console.log(divAttr);
+			console.log(divAttr.nodeType);	//	2 Attribute Node
+			
+			console.log("div.tbl =======================================");
+			let docTbl = docDiv.childNodes[1];
+			console.log(docTbl);
+			
+			console.log("div.td ========================================");
+			let tds = docTbl.getElementsByTagName("td");
+			console.log(tds);	//	length : 12
+			
+			let tdTxt = tds[0].childNodes[0];
+			console.log(tdTxt);	//	"1, 1"
+			
+		</script>
+	</body>
+</html>
