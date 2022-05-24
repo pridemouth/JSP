@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>입력하기</title>
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 400px;
+			margin: 0 auto;
+		}
+		fieldset {
+			padding: 20px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<fieldset>
+				<legend>배경색 선택</legend>
+				<select>
+					<option value="red">빨강색</option>
+					<option value="blue">파랑색</option>
+					<option value="green">녹색</option>
+					<option value="black">검은색</option>
+					<option value="white">흰색</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<legend>문자색 선택</legend>
+				<input type="radio" name="font" value="red">적색
+				<input type="radio" name="font" value="blue">청색
+				<input type="radio" name="font" value="green">녹색
+				<input type="radio" name="font" value="black">흑색
+				<input type="radio" name="font" value="white">백색
+			</fieldset>
+			<fieldset>
+				<legend>문자 입력</legend>
+				<input type="text" placeholder="문자를 입력">
+			</fieldset>
+			<fieldset>
+				<legend>출력횟수 선택</legend>
+				<input type="range" min="1" max="5" value="1">
+				<input type="button" value="출력!!">
+			</fieldset>
+			<fieldset>
+				<legend>출력영역</legend>
+				<p></p>
+			</fieldset>
+		</div>
+		<script>
+			//	wrap div 안에 fieldset 5개 포함되어있음.
+			var fieldset = document.getElementsByTagName("fieldset");
+			//	input button 추출
+			var btn = fieldset[3].getElementsByTagName("input");
+			
+			//	select에서 선택된 value값을 저장 (배경색)
+			var backgroundColor = "";
+			//	radio에서 선택된 value값을 저장 (글자색)
+			var color = "";
+			//	input select에서 선택된 value값을 저장 (문자)
+			var text = "";
+			//	range를 통해 선택된 value값을 저장 (범위)
+			var number = "";
+			
+			//	button 클릭 시 실행
+			btn[1].addEventListener("click", function()
+			{
+				var select = fieldset[0].getElementsByTagName("select");
+				
+				//	select에서 선택되어 있는 항목 추출
+				backgroundColor = select[0].value;	
+				console.log(backgroundColor);
+				
+				//	radio input에서 선택되어 있는 항목 추출
+				var radio = fieldset[1].getElementsByTagName("input");
+				for(var i=0; i<radio.length; i++)
+				{
+					if(radio[i].checked)
+					{
+						color = radio[i].value;
+						console.log(color);
+					}
+				}
+				
+				//	input text 에 입력된 항목 추출
+				var content = fieldset[2].getElementsByTagName("input");
+				text = content[0].value;
+				console.log(text);
+				
+				//	range에서 선택되어 있는 항목 추출
+				var range = fieldset[3].getElementsByTagName("input");
+				number = range[0].value;
+				console.log(number);
+				
+				//	출력
+				var pTag = fieldset[4].getElementsByTagName("p");
+				pTag[0].style.backgroundColor = backgroundColor;
+				pTag[0].style.color = color;
+				
+				var msg = "";
+				
+				for(var i = 0; i<number; i++)
+				{
+					msg += (text + " ");
+				}
+				
+				pTag[0].innerHTML = msg;
+			});
+			
+			
+		</script>
+	</body>
+</html>

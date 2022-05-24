@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- lang="ko" 옵션은 구글 같은 검색엔진에서 검색했을 경우 '한국어' 검색 결과값에 포함되도록 함. -->
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>캔버스</title>
+	</head>
+	<body>
+		<canvas id="can">
+			
+		</canvas>
+		<script>
+			//	1. html에서 javascript로 canvas 태그를 가져옴.
+			//	2. canvas 태그로부터 context를 추출.
+			//	3. context에 수정을 가해 그림을 만듦.
+			//	* context란? 
+			//		컴퓨터에게 전체적인 그림을 설명하기 위한 일련의 구문
+			
+			//	1.
+			var canvas = document.getElementById("can");
+			
+			//	canvas 사이즈를 지정하지 않은 경우, default 300x150으로 지정됨.
+			//	canvas도 태그이기 때문에, css로 사이즈를 조정할 수 있지만 화면의 왜곡이 발생함.
+			//	jsp로 작성하는 것이 안전함.
+			canvas.width = 600;
+			canvas.height = 600;
+			
+			//	2.
+			var ctx = canvas.getContext("2d");
+			console.log(ctx);
+			
+			//	빨간색 직사각형 그리기
+			ctx.fillStyle = "red";
+			ctx.fillRect(10, 10, 100, 50); // (originX, originY, width, height)
+			
+			//	파란색 속이 빈 직사각형 그리기
+			ctx.strokeStyle = "blue";
+			ctx.strokeRect(10, 70, 100, 50);	// (same)
+			
+			//	흰색 직사각형 그리기 (해당 구역을 지운 것 처럼 보임)
+			ctx.clearRect(15, 15, 25, 100);
+			
+		</script>
+	</body>
+</html>

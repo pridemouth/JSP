@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>캔버스 그림 그리기</title>
+	</head>
+	<body>
+		<canvas id="can">
+			
+		</canvas>
+		<script>
+			var canvas = document.getElementById("can");
+			var ctx = canvas.getContext("2d");
+			
+			canvas.width = 600;
+			canvas.height = 600;
+			
+			//	선 그리기 "ㄱ"
+			ctx.strokeStyle = "red";
+			
+			ctx.beginPath();		//	그리기 시작 좌표를 설정
+			ctx.moveTo(50, 100);	//	시작 좌표의 이동
+			ctx.lineTo(100, 100);	//	시작 좌표로부터 해당 좌표까지 직선 그리기.
+			ctx.lineTo(75, 150);
+			ctx.stroke();
+			ctx.closePath();
+			
+			//	선 그리기 "ㅏ"
+			ctx.beginPath();
+			ctx.moveTo(130, 80);
+			ctx.lineTo(130, 150);
+			ctx.moveTo(130, 110);
+			ctx.lineTo(155, 110);
+			ctx.stroke();
+			ctx.closePath();
+			
+			//	삼각형 그리기
+			ctx.strokeStyle = "black";
+			
+			ctx.beginPath();
+			ctx.moveTo(175, 100);	//	원점
+			ctx.lineTo(200, 125);	//	변 1
+			ctx.lineTo(200, 75);	//	변 2
+			ctx.lineTo(175, 100);	//	변 3 (원점으로)
+			ctx.stroke();
+			ctx.closePath();
+			
+			//	속이 꽉 찬 사각형 그리기
+			//	색상 관련 서식은
+			//	beginPath(), closePath() 사이에 위치하기만 하면 됨.
+			ctx.beginPath();
+			ctx.rect(20, 20, 50, 50);
+			ctx.fillStyle = "#ff0000";
+			ctx.fill();
+			ctx.closePath();
+			
+			//	속이 빈 사각형 그리기
+			ctx.beginPath();
+			ctx.rect(100, 20, 80, 40);
+			ctx.strokeStyle = "#0000ff";
+			ctx.stroke();
+			ctx.closePath();
+			
+			//	원(호) 그리기
+			//	ctx.arc(originX, originY, radius, startAngle, endAngle, reverse_clockwise);
+			ctx.beginPath();
+			ctx.arc(250, 60, 20, 0, Math.PI * 2, false);
+			ctx.strokeStyle = "#00ff00";
+			ctx.stroke();
+			ctx.closePath();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>캔버스 투명도</title>
+	</head>
+	<body>
+		<canvas id="can">
+			
+		</canvas>
+		<script>
+			var canvas = document.getElementById("can");
+			var ctx = canvas.getContext("2d");
+			
+			canvas.width = 600;
+			canvas.height = 600;
+			
+			//	RGB 방식으로 색 넣기 : rgba()
+			ctx.fillStyle = "rgba(200, 0, 0, 0.7)";
+			ctx.fillRect(10, 10, 100, 100);
+			
+			ctx.fillStyle = "rgba(0, 200, 0, 0.7)";
+			ctx.fillRect(30, 30, 100, 100);
+			
+			ctx.fillStyle = "rgba(0, 0, 200, 0.7)";
+			ctx.fillRect(50, 50, 100, 100);
+			
+		</script>
+	</body>
+</html>

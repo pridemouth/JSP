@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>smile</title>
+	</head>
+	<body>
+		<canvas id="can">
+		</canvas>
+		<script>
+			let canvas = document.getElementById("can");
+			let ctx = canvas.getContext("2d");
+			
+			canvas.width = 600;
+			canvas.height = 600;
+			
+			let oriX = 300;
+			let oriY = 300;
+			
+			//	begin, closePath()를 계속 사용하는 방법 말고
+			//	moveTo()를 사용하는 방법도 있음.
+			ctx.beginPath();
+			ctx.arc(oriX, oriY, 50, 0, Math.PI * 2, false);
+			ctx.stroke();
+			ctx.closePath();
+			
+			ctx.beginPath();
+			ctx.arc(oriX, oriY-10, 40, Math.PI * 0.25, Math.PI * 0.75, false);
+			ctx.stroke();
+			ctx.closePath();
+			
+			ctx.beginPath();
+			ctx.arc(oriX-17, oriY-10, 7, 0, Math.PI * 2, false);
+			ctx.stroke();
+			ctx.closePath();
+			
+			ctx.beginPath();
+			ctx.arc(oriX+17, oriY-10, 7, 0, Math.PI * 2, false);
+			ctx.stroke();
+			ctx.closePath();
+			
+			ctx.beginPath();
+			ctx.arc(oriX, oriY+30, 10, 0, Math.PI, false);
+			ctx.stroke();
+			ctx.closePath();
+		</script>
+	</body>
+</html>
