@@ -1,0 +1,229 @@
+
+* {
+	/*
+		'*'은 "전체 선택자".
+		이 선택자를 사용해 html 문서 내의 모든 object의,
+		통일이 필요한 속성을 일괄 지정할 수 있음.
+		
+		각 태그들은 고유의 서로 다른 속성값들을 지니고 있기 때문에, 
+		이것이 개발자가 개발 도중에 일일히 신경쓰려면 너무나 귀찮고 번거로운 일임.
+	*/
+	margin: 0px;
+	padding: 0px;
+
+}
+
+#wrap {
+	/*
+		div와 같은 block 태그의 경우는
+		(block 태그는 한 줄을 통째로 잡아먹으려는 성질이 있음)
+		중앙정렬시에 width 값을 주고, margin 0 auto로 정렬함.
+		 
+		div#wrap에는 따로 height 값을 주지 않으며,
+		내용물의 height값에 의해 자동으로 height값이 정해짐.
+		
+		좌우로 object들을 정렬할 때에는 float 대신 inline을 쓰는 방법도 있음.
+	*/
+	width: 600px;
+	margin: 0 auto;
+	background-color: lightgray;
+}
+
+#left {
+	float: left;
+	background-color: orange;
+}
+
+#right {
+	float: right;
+	background-color: orange;
+}
+
+#wrap:before {
+	content: "ohasdfasdlkfasdfjln";
+}
+
+/*
+	clear fix 기법
+	wrap의 배경이 내용물의 float 속성으로 인해 말려 올라가는 것을 방지.
+	* #wrap:after 중괄호를 주석처리해 볼 것.
+	
+	':' 뒤의 'after'는 "가상 선택자".
+	라는 이름의 id / class를 만든 적은 없지만,
+	그 곳에 무언가가 있을 경우에 해당 서식을 적용함을 의미.
+	
+	content 속성에 내용을 집어넣으면,
+	wrap이 내용물 이후로 content의 내용을 표시해버림.
+	이것은 당초에 wrap의 height를 지정하지 않은 의도를 훼손함.
+*/
+#wrap:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+ol {
+	list-style-position: inside;
+	border: 1px solid gray;
+	background-color: gray;
+	width: 75px;
+	/*
+		ol 대신 ul을 사용하는 이유는,
+		ol에서는 머릿기호를 데이터로써 취급하지 않기 때문임.
+		* html에서 머릿기호를 드래그해서 선택해 볼 것.
+		머릿기호에 다양한 효과를 주기 편리한 ul이 많이 쓰임.
+	*/
+}
+
+ol li {
+	width: 45px;
+	height: 20px;
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+	border: 1px solid black;
+	background-color: white;
+}
+
+ul {
+	width: 240px;
+	list-style: none;
+	border: 1px solid gray;
+	padding: 0;
+	margin: 0 auto;	/* 중앙정렬 */
+	/* ul li 에 list-style: none; 을 걸어서 메뉴바에 많이 씀. */
+}
+
+ul li {
+	float: left;
+	text-align: center;
+	padding: 5px;
+	height: 20px;
+	width: 48px;	/* width: 50px; */
+	border: 1px solid gray;
+	/*
+		border도 1px의 굵기가 있기 때문에,
+		당초에 의도했던 ul li의 너비 50px을 주게 되면
+		ul의 너비 240px을 초과하게 됨.
+		
+		개발 이후, 배포 시점에 border를 없애야 할 때
+		너비를 올바르게 수정할 수 있도록 옆에 주석을 남겨두면 좋음.
+	*/
+}
+
+ul:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/*
+	addEventListener("mouseover", function(){}) 과 동일.
+
+	마우스 오버 시 하위 level 메뉴가 나오는 기능은
+	css에서 visibility: hidden;을 사용해서 구현할 수 있음.
+*/
+ul li:hover {
+	background-color: black;
+	color: white;
+}
+
+/*
+	선택(클릭)시 보여질 서식.
+	input 태그일 경우에도 사용 가능.
+	
+	단, css에서는 외형적인 모습밖에 구현할 수 없다.
+	javaScript를 통해야만 데이터의 이동, 조작을 행할 수 있음.
+*/
+ul li:active {
+	background-color: red;
+	color: white;
+}
+
+div {
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+	background-color: white;
+}
+
+p {
+	background-color: lightcyan;
+	border: 1px solid gray;
+	padding: 10px;
+	margin: 5px;
+	
+}
+
+h1 {
+	background-color: lightcoral;
+	border: 1px solid gray;
+	padding: 5px;
+}
+
+h2 {
+	background-color: lightgreen;
+	border: 1px solid gray;
+	padding: 5px;
+}
+
+/* span 태그는 기본 display 속성값이 inline임. */
+span {
+	border: 1px solid red;
+}
+
+table {
+	width: 380px;
+	margin: 0 auto;
+	background-color: lightsalmon;
+	border: 1px solid gray;
+}
+
+td {
+	text-align: center;
+	background-color: lightskyblue;
+}
+
+/*
+	선택자 ==============================================================================
+	
+	조합 선택자의 경우, 좁은 범위의 태그를 특정하는 데 효과적이나,
+	id보다 우선하지는 않는다.
+*/
+
+h2 span {
+	/* background-color: purple; */ 
+}
+
+fieldset > p {
+	/* background-color: pink; */
+}
+
+/*
+	기준점 + 형제 : 형제들 중 첫째만 선택.
+	h1 태그 아래 p 태그가 넷 있지만, h1 + p 사용 시
+	첫 번째 p 태그만 선택됨.
+*/
+h1 + p {
+	/* background-color: teal; */
+}
+
+/* 기준점 ~ 형제 : 형제 전부 선택 */
+h1 ~ p {
+	/* background-color: gray; */
+}
+
+/*
+	가상 클래스 ==============================================================================
+*/
+
+/* only-child : 자식이 하나만 존재하는 경우 */
+p:only-child {
+	/* background-color: red; */
+	/* 외않됌? */
+}
+
+/* only-of-type : 같은 레벨에 해당 종류의 태그가 하나만 있는 경우 */
+p:only-of-type {
+	background-color: purple;
+}
