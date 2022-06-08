@@ -1,0 +1,107 @@
+<220530 jsp>
+
+	install	============================================================================================
+
+	TomCat?
+	서버에 인스톨하여 사용하는 WAS(Web Application Server)
+	현재 TomCat 8.0 많이 씀.
+	
+	Eclipse 환경설정
+		"java 개발은 환경설정이 9할"	
+		톰캣 인스톨러를 사용하여 톰캣을 설치할 경우,
+		Eclipse를 설치하며 같이 설치했던 jre와 충돌을 일으킬 수도 있음.
+		-> Eclipse workspace를 분리
+		
+	.metadata 폴더에 Eclipse의 환경설정에 대한 모든 데이터가 들어가 있음.
+	
+	.jar 확장자 파일을 알집이 압축파일로 인식해 버리기 때문에
+	Java 개발 시 zip 쓰면 꼴 좀 받을 수 있음.
+	
+	workspace 분리방법
+	1. Eclipse 바로가기, 작업공간을 하나 더 만듦.
+	2. 새로 만든 바로가기의 속성에 들어가서, 대상(T) 마지막에 -data "작업공간 경로" 입력.
+	
+	main	============================================================================================
+	
+	Server
+		web.xml의 최하단에 있는 welcome-file-list의 파일들이 이 서버의 시작점임.
+	
+	Dynamic Web Project
+		webapp 폴더에 index.jsp 파일을 생성.
+		실행 시에 프로젝트를 클릭해서 실행. (페이지 클릭해서 실행하면 페이지 단독으로만 실행됨)
+	
+	***
+	java 코드는 정적으로 html 코드에 합병, String 형태로 클라이언트 브라우저로 전송됨.
+	실제 웹 페이지 실행 시 효과를 주고 싶으면 jsp/css를 사용해야 함.
+	
+	스크립트 릿
+	<% %> 이 안의 코드는 java로 기술된 것으로 간주함.
+		System.out.println("");	// 이클립스 콘솔에 출력
+		out.println("");		// 브라우저 화면에 출력
+		
+	스크립트 릿에서 변수를 바로 참조하는 기능
+	<%=변수명%>
+	
+	<!-- html 주석 -->
+		html 해독 시 읽음, html 상에서 하나의 노드로 취급될 수 있음.
+	<%-- scriptLet 주석 --%>
+		java 코드 해독 시 읽음, 스크릿트 릿 내부의 내용 전부 비실행.
+	<%// java 주석 %> << 제일 좋아보임.
+		java 코드 해독 시 읽음, 스크립트 릿 내부의 내용 중 선별적으로 실행.
+		
+	http://localhost:8080/Study01/
+	8080 : TomCat 고유 포트번호
+	
+<220608 jsp>
+
+서블릿?
+
+	session.setAttribute("grade", "일반회원");
+	response.sendRedirect("main.jsp");
+	
+	javascript를 이용해 클라이언트 측에서 알아서 sendRedirect와 비슷한 동작을 구현 가능.
+	<script>
+		alert("로그인에 실패하였습니다.");
+		location.href = "index.jsp";
+	</script>
+	
+	관리 메뉴 : 시스템의 모든 로그를 열람할 수 있어야 함.
+	
+DB와의 연동 
+	JDBC(Java DataBase Connector) 필요. - Java, MySQL간의 통역 정도로 이해.
+	** DB 제작사에서 제작, 배포하는 것임. Java에서 기본 배포하는 것 이 아님에 주의.
+	statement:SQL 
+	ResultSet : '객체'에 대응하는 SQL상의 테이블의 통칭.
+	
+	C:\Program Files (x86)\MySQL\Connector J 8.0
+	Connector J 8.0 : JDBC root 폴더
+	내부의 mysql-connector-java 뭐시깽이.jar을 Dynamic Web Project의 WEB-INF : lib 폴더 안에 붙여넣어 사용.
+	
+	jsp file에서 라이브러리 임포트하듯이 아래와 같이 기입해주어야 함.
+	<%@ page import="java.sql.*" %>
+	
+	** MySQL client pw : iotiot
+	
+	우리는 8. 버전 사용 중.
+	현업에서는 5. 버전 많이 사용함.
+	
+	톰캣 포트 번호 : 8080
+	MySQL 포트 번호 : 3306
+	
+	MySQL 명령어
+	status
+	show databases;
+	create database DBName;
+	
+	desc [TABLE_NAME];
+	
+	//	table 생성
+	Create table [TABLE_NAME](
+			[FIELD_NAME] [TYPE] auto_increment primary key,
+			[FIELD_NAME] [TYPE] null,
+			...
+		);
+		
+	//	field 입력
+	insert into [TABLE_NAME] (field name 1, 2, 3 ...) values(value 1, 2, 3 ...);
+	select * from [TABLE_NAME];
